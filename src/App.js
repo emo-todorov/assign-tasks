@@ -1,15 +1,16 @@
-import Form from "./components/Form";
-import { useDispatch, useSelector } from "react-redux";
-import { addHuman } from "./store/slices/humansSlice";
-import { addTask, assignToUser } from "./store/slices/tasksSlice";
+import { useDispatch } from "react-redux";
 import AllHumans from "./components/AllHumans";
 import AllTasks from "./components/AllTasks";
+import { resetAction } from "./store/actions/actions";
 
 function App() {
+  const dispatch = useDispatch();
 
   return (
     <div className="App">
       <h1>App</h1>
+
+      <button onClick={() => dispatch(resetAction())}>Reset lists</button>
 
       <div className="app-wrapper">
         <AllHumans />

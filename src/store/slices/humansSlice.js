@@ -1,5 +1,6 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { tasksSlice } from "./tasksSlice";
+import { resetAction } from "../actions/actions";
 
 const initialState = [
     {
@@ -31,7 +32,11 @@ export const humansSlice = createSlice({
             const human = state.find(({ id }) => id === humanId);
 
             human.taskIds.push(taskId);
-        })
+        });
+
+        builder.addCase(resetAction, (state, action) => {
+            return [];
+        });
     }
 });
 

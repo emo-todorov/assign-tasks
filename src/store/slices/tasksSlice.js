@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { resetAction } from "../actions/actions";
 
 export const tasksSlice = createSlice({
     name: 'tasks',
@@ -26,6 +27,11 @@ export const tasksSlice = createSlice({
             const task = state.find(({ id }) => id === taskId);
             task.completed = isCompleted;
         },
+    },
+    extraReducers: builder => {
+        builder.addCase(resetAction, (state, action) => {
+            return [];
+        });
     }
 });
 
